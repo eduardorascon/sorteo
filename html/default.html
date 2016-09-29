@@ -9,7 +9,17 @@
 <body>
 	<div class="mdl-layout mdl-js-layout">
 		<main class="mdl-layout__content" style="flex: 1 0 auto;">
-			...
+			<form action="/your-charge-code" method="POST">
+				<script
+				src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+				data-key="pk_test_8dd3LPVANWkLgE2WDXIcXLfw"
+				data-amount="999"
+				data-name="Demo Site"
+				data-description="Widget"
+				data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+				data-locale="auto">
+				</script>
+			</form>
 		</main>
 		<footer class="mdl-mini-footer">
 			<div class="mdl-mini-footer__left-section">
