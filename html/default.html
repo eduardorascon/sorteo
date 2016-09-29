@@ -10,6 +10,10 @@
 			key: 'pk_test_8dd3LPVANWkLgE2WDXIcXLfw',
 			locale: 'auto',
 			currency: 'MXN',
+			zipCode: true,
+			//billingAddress: true,
+			name: 'Sorteo iPhone 7',
+			//panelLabel: '¡Comprar!',
 			token: function(token) {
 				alert(token.id);
 			}
@@ -19,9 +23,8 @@
 			var firstButton = document.getElementById('firstButton');
 			firstButton.addEventListener('click', function(e){
 				handler.open({
-					name: 'Demo 1',
-					descripcion: 'Boleto básico',
-					amount: 5000
+					description: 'Boleto básico',
+					amount: 4500
 				});
 				e.preventDefault();
 			});
@@ -29,9 +32,8 @@
 			var secondButton = document.getElementById('secondButton');
 			secondButton.addEventListener('click', function(e){
 				handler.open({
-					name: 'Demo2',
-					descripcion: 'Boleto PREMIUM',
-					amount: 9000
+					description: 'Boleto PREMIUM',
+					amount: 7500
 				});
 				e.preventDefault();
 			});
