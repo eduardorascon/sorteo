@@ -1,25 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="es-MX">
 <head>
-	<title>{{title}}</title>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+	<script src="https://checkout.stripe.com/checkout.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+	<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css" />
 	<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+	<script>
+		var handler = StripeCheckout.configure({
+			key: 'pk_test_8dd3LPVANWkLgE2WDXIcXLfw',
+			locale: 'auto',
+			currency: 'MXN',
+			token: function(token) {
+				alert(token.id);
+			}
+		});
+
+		window.onload = function(){
+			var firstButton = document.getElementById('firstButton');
+			firstButton.addEventListener('click', function(e){
+				handler.open({
+					name: 'Demo 1',
+					descripcion: 'Boleto básico',
+					amount: 5000
+				});
+				e.preventDefault();
+			});
+
+			var secondButton = document.getElementById('secondButton');
+			secondButton.addEventListener('click', function(e){
+				handler.open({
+					name: 'Demo2',
+					descripcion: 'Boleto PREMIUM',
+					amount: 9000
+				});
+				e.preventDefault();
+			});
+		}
+
+		window.addEventListener('popstate', function(){
+			handler.close();
+		})
+	</script>
+	<title>{{title}}</title>
 </head>
 <body>
 	<div class="mdl-layout mdl-js-layout">
 		<main class="mdl-layout__content" style="flex: 1 0 auto;">
-			<form action="/your-charge-code" method="POST">
-				<script
-				src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-				data-key="pk_test_8dd3LPVANWkLgE2WDXIcXLfw"
-				data-amount="999"
-				data-name="Demo Site"
-				data-description="Widget"
-				data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-				data-locale="auto">
-				</script>
-			</form>
+			<button id="firstButton">Basico</button>
+			<button id="secondButton">Premium</button>
 		</main>
 		<footer class="mdl-mini-footer">
 			<div class="mdl-mini-footer__left-section">
