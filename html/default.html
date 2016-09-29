@@ -43,6 +43,16 @@
 			handler.close();
 		})
 	</script>
+	<style type="text/css">
+		.demo-card-square.mdl-card {
+			width: 320px;
+			height: 320px;
+		}
+		.demo-card-square > .mdl-card__title {
+			color: #fff;
+			background: bottom right 15% no-repeat #FFD700;
+		}
+	</style>
 	<title>{{title}}</title>
 </head>
 <body>
@@ -50,10 +60,24 @@
 		<main class="mdl-layout__content" style="flex: 1 0 auto;">
 			<div class="mdl-grid">
 				<div class="mdl-cell mdl-cell--6-col">
-					<button id="firstButton" class="mdl-button mdl-js-button mdl-button--raised">Basico</button>
+					<div class="mdl-card">
+						<div class="mdl-card__title"><h2 class="mdl-card__title-text">Básico</h2></div>
+						<div class="mdl-card__media"></div>
+						<div class="mdl-card__supporting-text">Sorteo Básico</div>
+						<div class="mdl-card__actions">
+							<button id="firstButton" class="mdl-button mdl-js-button mdl-button--raised">Basico</button>
+						</div>
+					</div>
 				</div>
 				<div class="mdl-cell mdl-cell--6-col">
-					<button id="secondButton" class="mdl-button mdl-js-button mdl-button--raised">Premium</button>
+					<div class="mdl-card demo-card-square">
+						<div class="mdl-card__title"><h2 class="mdl-card__title-text">PREMIUM</h2></div>
+						<div class="mdl-card__media"></div>
+						<div class="mdl-card__supporting-text">SORTEO PREMIUM</div>
+						<div class="mdl-card__actions">
+							<button id="secondButton" class="mdl-button mdl-js-button mdl-button--raised">Premium</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</main>
