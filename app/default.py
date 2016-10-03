@@ -2,7 +2,7 @@ import webapp2
 import os
 from google.appengine.ext.webapp import template
 
-class MainHandler(webapp2.RequestHandler):
+class DefaultHandler(webapp2.RequestHandler):
     def get(self):
         template_values = {
             'title': 'Test'
