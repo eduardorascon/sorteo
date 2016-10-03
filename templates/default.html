@@ -44,13 +44,21 @@
 		})
 	</script>
 	<style type="text/css">
-		.demo-card-square.mdl-card {
+		.demo-card-gold.mdl-card {
 			width: 90%;
 			height: 400px;
 		}
-		.demo-card-square > .mdl-card__title {
+		.demo-card-silver.mdl-card {
+			width: 90%;
+			height: 400px;
+		}
+		.demo-card-gold > .mdl-card__title {
 			color: #fff;
 			background: bottom right 15% no-repeat #FFD700;
+		}
+		.demo-card-silver > .mdl-card__title {
+			color: #fff;
+			background: bottom right 15% no-repeat #CCCCCC;
 		}
 	</style>
 	<title>{{title}}</title>
@@ -67,9 +75,9 @@
 <body>
 	<div class="mdl-layout mdl-js-layout">
 		<main class="mdl-layout__content" style="flex: 1 0 auto;">
-			<div class="mdl-grid">
+			<div class="mdl-grid" style="width:85%">
 				<div class="mdl-cell mdl-cell--6-col">
-					<div class="mdl-card">
+					<div class="mdl-card demo-card-silver">
 						<div class="mdl-card__title"><h2 class="mdl-card__title-text">Básico</h2></div>
 						<div class="mdl-card__media"></div>
 						<div class="mdl-card__supporting-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenan convallis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenan convallis.</div>
@@ -79,7 +87,7 @@
 					</div>
 				</div>
 				<div class="mdl-cell mdl-cell--6-col">
-					<div class="mdl-card demo-card-square">
+					<div class="mdl-card demo-card-gold">
 						<div class="mdl-card__title"><h2 class="mdl-card__title-text">PREMIUM</h2></div>
 						<div class="mdl-card__media"></div>
 						<div class="mdl-card__supporting-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenan convallis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenan convallis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenan convallis.</div>
