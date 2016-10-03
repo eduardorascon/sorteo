@@ -8,5 +8,5 @@ class DefaultHandler(webapp2.RequestHandler):
             'title': 'Test'
         }
         
-        path = os.path.join(os.path.dirname(__file__), '../html/default.html')
+        path = os.path.join(os.path.dirname(__file__), '../templates/default.html')
         self.response.write(template.render(path, template_values))
