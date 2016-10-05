@@ -9,8 +9,8 @@ class FacebookHandler(webapp2.RequestHandler):
         code = self.request.get('code')
         
         if not code == '':
-            params = (client_id, base_url, '{app-secret}', code)
-            url = str('https://graph.facebook.com/v2.7/oauth/access_token?client_id=%s&redirect_uri=%s&client_secret=%s&code=%s' % params)
+            params = (FacebookHandler.client_id, FacebookHandler.base_url, '{app-secret}', code)
+            url = 'https://graph.facebook.com/v2.7/oauth/access_token?client_id=%s&redirect_uri=%s&client_secret=%s&code=%s' % params
             response = urllib2.urlopen(url)
             html = response.read()
             self.response.write(html)
@@ -21,6 +21,6 @@ class FacebookHandler(webapp2.RequestHandler):
             self.redirect('../')
 
     def post(self):
-        params = (client_id, base_url)
+        params = (FacebookHandler.client_id, FacebookHandler.base_url)
         url = str('https://www.facebook.com/dialog/oauth?client_id=%s&redirect_uri=%s' % params)
         self.redirect(url)
