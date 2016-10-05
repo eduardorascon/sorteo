@@ -53,6 +53,11 @@
 			dialog.querySelector('.close').addEventListener('click', function() {
 				dialog.close();
 			});
+
+			var fbPostButton = document.querySelector('#fbPostButton');
+			fbPostButton.addEventListener('click', function(){
+				document.forms['hiddenForm'].submit();
+			});
 		}
 
 		window.addEventListener('popstate', function(){
@@ -138,9 +143,12 @@
 			<p>Para poder participar necesitamos registrarte</p>
 		</div>
 		<div class="mdl-dialog__actions">
-			<button type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Ingresar</button>
+			<button id="fbPostButton" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Ingresar</button>
 			<button type="button" class="mdl-button close">No, gracias.</button>
 		</div>
 	</dialog>
+	<form name="hiddenForm" action="/fb" method="post">
+		<input type="hidden" name="hiddenInput" value="" />
+	</form>
 </body>
 </html>
