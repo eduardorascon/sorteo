@@ -27,5 +27,5 @@ class FacebookHandler(webapp2.RequestHandler):
 
     def post(self):
         params = (FacebookHandler.client_id, FacebookHandler.base_url)
-        url = str('https://www.facebook.com/dialog/oauth?client_id=%s&redirect_uri=%s' % params)
+        url = str('https://www.facebook.com/dialog/oauth?client_id=%s&redirect_uri=%s&response_type=code' % params)
         self.redirect(url)

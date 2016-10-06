@@ -63,6 +63,10 @@
 		window.addEventListener('popstate', function(){
 			handler.close();
 		})
+
+		if (window.location.hash && window.location.hash == '#_=_') {
+			window.location.hash = '';
+		}
 	</script>
 	<style type="text/css">
 		.demo-card-gold.mdl-card {
