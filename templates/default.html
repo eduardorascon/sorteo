@@ -37,11 +37,36 @@
 				});
 				e.preventDefault();
 			});
+
+
+			var dialog = document.querySelector('dialog');
+			var showDialogButton = document.querySelector('#fbLoginButton');
+			
+			if (! dialog.showModal) {
+				dialogPolyfill.registerDialog(dialog);
+			}
+			
+			showDialogButton.addEventListener('click', function() {
+				dialog.showModal();
+			});
+			
+			dialog.querySelector('.close').addEventListener('click', function() {
+				dialog.close();
+			});
+
+			var fbPostButton = document.querySelector('#fbPostButton');
+			fbPostButton.addEventListener('click', function(){
+				document.forms['hiddenForm'].submit();
+			});
 		}
 
 		window.addEventListener('popstate', function(){
 			handler.close();
 		})
+
+		if (window.location.hash && window.location.hash == '#_=_') {
+			window.location.hash = '';
+		}
 	</script>
 	<style type="text/css">
 		.demo-card-gold.mdl-card {
@@ -75,6 +100,7 @@
 <body>
 	<div class="mdl-layout mdl-js-layout">
 		<main class="mdl-layout__content" style="flex: 1 0 auto;">
+			<button id="fbLoginButton" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">FB</button>
 			<div class="mdl-grid" style="width:85%">
 				<div class="mdl-cell mdl-cell--6-col">
 					<div class="mdl-card demo-card-silver">
@@ -114,5 +140,19 @@
 			</div>
 		</footer>
 	</div>
+
+	<dialog class="mdl-dialog">
+		<h4 class="mdl-dialog__title">Allow data collection?</h4>
+		<div class="mdl-dialog__content">
+			<p>Para poder participar necesitamos registrarte</p>
+		</div>
+		<div class="mdl-dialog__actions">
+			<button id="fbPostButton" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Ingresar</button>
+			<button type="button" class="mdl-button close">No, gracias.</button>
+		</div>
+	</dialog>
+	<form name="hiddenForm" action="/fb" method="post">
+		<input type="hidden" name="hiddenInput" value="" />
+	</form>
 </body>
 </html>
