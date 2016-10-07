@@ -1,8 +1,9 @@
 import webapp2
 import urllib2
 import json
+import base
 
-class FacebookHandler(webapp2.RequestHandler):
+class FacebookHandler(base.BaseHandler):
     client_id = '652896994869977'
     base_url = 'https://sorteoiphone7.appspot.com/fb'
 
