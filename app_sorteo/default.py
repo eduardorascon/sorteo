@@ -7,8 +7,8 @@ class DefaultHandler(base.BaseHandler):
     def get(self):
 
     	title = 'Prueba Appengine'
-    	if self.session.get('first_name') != None:
-    		title = self.session.get('first_name')
+    	if self.session.get('name') != None:
+    		title = self.session.get('name')
 
         template_values = {
             'title': title
