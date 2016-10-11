@@ -15,7 +15,9 @@ class BaseHandler(webapp2.RequestHandler):
 
 	@webapp2.cached_property
 	def session(self):
-		#Returns a session using the default cookie key.
-		return self.session_store.get_session()
+		#Returns a session using the datastore backend.
+		return self.session_store.get_session(backend = 'datastore')
 
+#sources
 #http://www.essentialtech.co.nz/content/using_session_google_app_engine_and_python_27
+#http://aspiringpythoness.blogspot.mx/2012/01/how-to-configure-different-session.html
