@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+	<script src="https://checkout.stripe.com/checkout.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+	<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css" />
+	<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+	<script>
+		var handler = StripeCheckout.configure({
+			key: 'pk_test_8dd3LPVANWkLgE2WDXIcXLfw',
+			locale: 'auto',
+			currency: 'MXN',
+			zipCode: true,
+			//billingAddress: true,
+			name: 'Sorteo iPhone 7',
+			//panelLabel: '¡Comprar!',
+			token: function(token) {
+				alert(token.id);
+			}
+		});
+
+		window.onload = function(){
+			var firstButton = document.getElementById('firstButton');
+			firstButton.addEventListener('click', function(e){
+				handler.open({
+					description: 'Boleto básico',
+					amount: 4500
+				});
+				e.preventDefault();
+			});
+
+			var secondButton = document.getElementById('secondButton');
+			secondButton.addEventListener('click', function(e){
+				handler.open({
+					description: 'Boleto PREMIUM',
+					amount: 7500
+				});
+				e.preventDefault();
+			});
+
+
+			var dialog = document.querySelector('dialog');
+			var showDialogButton = document.querySelector('#fbLoginButton');
+			
+			if (! dialog.showModal) {
+				dialogPolyfill.registerDialog(dialog);
+			}
+			
+			showDialogButton.addEventListener('click', function() {
+				dialog.showModal();
+			});
+			
+			dialog.querySelector('.close').addEventListener('click', function() {
+				dialog.close();
+			});
+
+			var fbPostButton = document.querySelector('#fbPostButton');
+			fbPostButton.addEventListener('click', function(){
+				document.forms['hiddenForm'].submit();
+			});
+		}
+
+		window.addEventListener('popstate', function(){
+			handler.close();
+		})
+
+		if (window.location.hash && window.location.hash == '#_=_') {
+			window.location.hash = '';
+		}
+	</script>
+	<style type="text/css">
+		.demo-card-gold.mdl-card {
+			width: 90%;
+			height: 400px;
+		}
+		.demo-card-silver.mdl-card {
+			width: 90%;
+			height: 400px;
+		}
+		.demo-card-gold > .mdl-card__title {
+			color: #fff;
+			background: bottom right 15% no-repeat #FFD700;
+		}
+		.demo-card-silver > .mdl-card__title {
+			color: #fff;
+			background: bottom right 15% no-repeat #CCCCCC;
+		}
+	</style>
+	<title>{{title}}</title>
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  		ga('create', 'UA-39238864-2', 'auto');
+  		ga('send', 'pageview');
+	</script>
+</head>
+<body>
+	<div class="mdl-layout mdl-js-layout">
+		<main class="mdl-layout__content" style="flex: 1 0 auto;">
+			<button id="fbLoginButton" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">FB</button>
+			<div class="mdl-grid" style="width:85%">
+				<div class="mdl-cell mdl-cell--6-col">
+					<div class="mdl-card demo-card-silver">
+						<div class="mdl-card__title"><h2 class="mdl-card__title-text">Básico</h2></div>
+						<div class="mdl-card__media"></div>
+						<div class="mdl-card__supporting-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenan convallis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenan convallis.</div>
+						<div class="mdl-card__actions">
+							<button id="firstButton" class="mdl-button mdl-js-button mdl-button--raised">Basico</button>
+						</div>
+					</div>
+				</div>
+				<div class="mdl-cell mdl-cell--6-col">
+					<div class="mdl-card demo-card-gold">
+						<div class="mdl-card__title"><h2 class="mdl-card__title-text">PREMIUM</h2></div>
+						<div class="mdl-card__media"></div>
+						<div class="mdl-card__supporting-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenan convallis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenan convallis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenan convallis.</div>
+						<div class="mdl-card__actions">
+							<button id="secondButton" class="mdl-button mdl-js-button mdl-button--raised">Premium</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<footer class="mdl-mini-footer">
+			<div class="mdl-mini-footer__left-section">
+				<div class="mdl-logo">Mini-footer Heading</div>
+				<ul class="mdl-mini-footer__link-list">
+					<li><a href="">Link 1</a></li>
+					<li><a href="">Link 2</a></li>
+					<li><a href="">Link 3</a></li>
+				</ul>
+			</div>
+			<div class="mdl-mini-footer__right-section">
+				<button class="mdl-mini-footer__social-btn"></button>
+				<button class="mdl-mini-footer__social-btn"></button>
+				<button class="mdl-mini-footer__social-btn"></button>
+			</div>
+		</footer>
+	</div>
+
+	<dialog class="mdl-dialog">
+		<h4 class="mdl-dialog__title">Allow data collection?</h4>
+		<div class="mdl-dialog__content">
+			<p>Para poder participar necesitamos registrarte</p>
+		</div>
+		<div class="mdl-dialog__actions">
+			<button id="fbPostButton" type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Ingresar</button>
+			<button type="button" class="mdl-button close">No, gracias.</button>
+		</div>
+	</dialog>
+	<form name="hiddenForm" action="/fb" method="post">
+		<input type="hidden" name="hiddenInput" value="" />
+	</form>
+</body>
+</html>
