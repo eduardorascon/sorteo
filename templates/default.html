@@ -7,6 +7,7 @@
 	<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 	<script>
 		var handler = StripeCheckout.configure({
+			//this key needs to change when released.
 			key: 'pk_test_8dd3LPVANWkLgE2WDXIcXLfw',
 			locale: 'auto',
 			currency: 'MXN',
@@ -24,7 +25,7 @@
 			firstButton.addEventListener('click', function(e){
 				handler.open({
 					description: 'Boleto básico',
-					amount: 4500
+					amount: 4900
 				});
 				e.preventDefault();
 			});
@@ -33,7 +34,7 @@
 			secondButton.addEventListener('click', function(e){
 				handler.open({
 					description: 'Boleto PREMIUM',
-					amount: 7500
+					amount: 7900
 				});
 				e.preventDefault();
 			});
@@ -41,7 +42,6 @@
 
 			var dialog = document.querySelector('dialog');
 			var showDialogButton = document.querySelector('#fbLoginButton');
-			
 			if (! dialog.showModal) {
 				dialogPolyfill.registerDialog(dialog);
 			}
