@@ -13,11 +13,8 @@
 			currency: 'MXN',
 			zipCode: true,
 			//billingAddress: true,
-			name: 'Sorteo iPhone 7',
+			name: 'Sorteo iPhone 7'
 			//panelLabel: '¡Comprar!',
-			token: function(token) {
-				alert(token.id);
-			}
 		});
 
 		window.onload = function(){
@@ -25,7 +22,11 @@
 			firstButton.addEventListener('click', function(e){
 				handler.open({
 					description: 'Boleto básico',
-					amount: 4900
+					amount: 4900,
+					token: function(token) {
+						alert("Básico: "+ token.id);
+						paymentsPost({stripeToken: token})
+					}
 				});
 				e.preventDefault();
 			});
@@ -34,7 +35,11 @@
 			secondButton.addEventListener('click', function(e){
 				handler.open({
 					description: 'Boleto PREMIUM',
-					amount: 7900
+					amount: 7900,
+					token: function(token) {
+						alert("PREMIUM: "+ token.id);
+						paymentsPost({stripeToken: token});
+					}
 				});
 				e.preventDefault();
 			});
@@ -66,6 +71,25 @@
 
 		if (window.location.hash && window.location.hash == '#_=_') {
 			window.location.hash = '';
+		}
+
+		function paymentsPost(params){
+			var form = document.createElement('form');
+			form.setAttribute('method', 'post');
+			form.setAttribute('action', '/payments');
+
+			for(var key in params){
+				if(params.hasOwnProperty(key)){
+					var hiddenField = document.createElement('input');
+					hiddenField.setAttribute('type', 'hidden');
+					hiddenField.setAttribute('name', key);
+					hiddenField.setAttribute('value', params[key]);
+					form.appendChild(hiddenField);
+				}
+			}
+
+			document.body.appendChild(form);
+			form.submit();
 		}
 	</script>
 	<style type="text/css">
