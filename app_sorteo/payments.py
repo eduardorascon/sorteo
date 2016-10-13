@@ -5,7 +5,7 @@ import base
 
 class PaymentsHandler(base.BaseHandler):
 	#this key needs to change when released.
-	stripe.api_key = 'pk_test_8dd3LPVANWkLgE2WDXIcXLfw'
+	stripe.api_key = 'sk_test_IHNilUCltlHhK0M4NZFV8Z1i'
 	def post(self):
 		token = self.request.get('stripeToken')
 		self.response.write('token: ' + token.id + '<br />')
