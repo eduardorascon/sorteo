@@ -8,13 +8,20 @@ class PaymentsHandler(base.BaseHandler):
 	stripe.api_key = 'sk_test_IHNilUCltlHhK0M4NZFV8Z1i'
 
 	def post(self):
+		#We need to make get the correct charge amount.
+		ticketType =  self.request.get('ticketType')
+		#
+		if ticketType not in 'BP':
+			raise ValueError('Boleto no disponible.')
+
+		amount =  4900 if ticketType == 'B' else 7900,
+
 		token = self.request.get('stripeToken')
-		ticket =  self.request.get('ticket')
 		self.response.write('token: ' + token + '<br />')
 
 		try:
 			charge = stripe.Charge.create(
-				amount = 4900 if token == 'B' else 7900,
+				amount = amount,
 				currency = "MXN",
 				source = token,
 				description = "Example charge"

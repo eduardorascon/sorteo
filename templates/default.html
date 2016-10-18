@@ -24,7 +24,7 @@
 					description: 'Boleto básico',
 					amount: 4900,
 					token: function(token) {
-						paymentsPost({stripeToken: token.id, ticket: 'B'})
+						paymentsPost({stripeToken: token.id, ticket_type: 'B'})
 					}
 				});
 				e.preventDefault();
@@ -36,7 +36,7 @@
 					description: 'Boleto PREMIUM',
 					amount: 7900,
 					token: function(token) {
-						paymentsPost({stripeToken: token.id, ticket: 'P'});
+						paymentsPost({stripeToken: token.id, ticket_type: 'P'});
 					}
 				});
 				e.preventDefault();
