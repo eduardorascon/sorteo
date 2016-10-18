@@ -9,11 +9,12 @@ class PaymentsHandler(base.BaseHandler):
 
 	def post(self):
 		token = self.request.get('stripeToken')
+		ticket =  self.request.get('ticket')
 		self.response.write('token: ' + token + '<br />')
 
 		try:
 			charge = stripe.Charge.create(
-				amount = 1000,
+				amount = 4900 if token == 'B' else 7900,
 				currency = "MXN",
 				source = token,
 				description = "Example charge"
