@@ -11,10 +11,9 @@ class FacebookHandler(base.BaseHandler):
 
     def get(self):
         code = self.request.get('code')
-        has_code = code != ''
         access_token = ''
 
-        if has_code:
+        if code != '':
             params = (self.client_id, self.base_url, self.app_secret, code)
             url = self.graph_url + '/oauth/access_token?client_id=%s&redirect_uri=%s&client_secret=%s&code=%s' % params
             response = urllib2.urlopen(url)
@@ -23,9 +22,7 @@ class FacebookHandler(base.BaseHandler):
         else:
             self.redirect('/')
 
-        has_access_token = access_token != ''
-
-        if has_access_token:
+        if access_token != '':
             self.session['access_token'] = access_token
             self.get_fb_user_data()
             self.redirect('/')
