@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import webapp2
 import urllib2
 import stripe
