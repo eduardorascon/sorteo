@@ -1,0 +1,16 @@
+.demo-card-gold.mdl-card {
+	width: 90%;
+	height: 400px;
+}
+.demo-card-silver.mdl-card {
+	width: 90%;
+	height: 400px;
+}
+.demo-card-gold > .mdl-card__title {
+	color: #fff;
+	background: bottom right 15% no-repeat #FFD700;
+}
+.demo-card-silver > .mdl-card__title {
+	color: #fff;
+	background: bottom right 15% no-repeat #CCCCCC;
+}

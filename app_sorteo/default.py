@@ -14,5 +14,5 @@ class DefaultHandler(base.BaseHandler):
             'title': title
         }
         
-        path = os.path.join(os.path.dirname(__file__), '../templates/default.html')
+        path = os.path.join(os.path.dirname(__file__), '../html/default.html')
         self.response.write(template.render(path, template_values))
